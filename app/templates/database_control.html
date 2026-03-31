@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-3">Database Control</h2>
+<div class="row g-4">
+  <div class="col-lg-4">
+    <div class="card shadow-sm rounded-4 p-4"><h5>Users</h5>
+      <ul class="list-group list-group-flush">
+        {% for user in users %}
+        <li class="list-group-item">{{ user.email }}<br><span class="text-muted">{{ user.role }}</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card shadow-sm rounded-4 p-4"><h5>Recent Plate Sets</h5>
+      <ul class="list-group list-group-flush">
+        {% for p in plate_sets %}
+        <li class="list-group-item">{{ p.plate_set_id }}<br><span class="text-muted">{{ p.job_id }} | {{ p.status }}</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card shadow-sm rounded-4 p-4"><h5>Recent Replacement Plates</h5>
+      <ul class="list-group list-group-flush">
+        {% for r in replacements %}
+        <li class="list-group-item">{{ r.replacement_plate_id }}<br><span class="text-muted">{{ r.plate_set_id }} | {{ r.status }}</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
